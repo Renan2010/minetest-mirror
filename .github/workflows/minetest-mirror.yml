@@ -21,5 +21,5 @@ jobs:
     - name: Push to GitHub
       run: |
         cd minetest
-        git remote set-url origin https://Renan2010:${{ secrets.PAT_GITHUB }}@
+        git remote set-url origin https://Renan2010:${{ secrets.PAT_GITHUB }}@github.com/Renan2010/minetest-mirror.git
         git push --mirror origin
