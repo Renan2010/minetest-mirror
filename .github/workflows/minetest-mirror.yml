@@ -16,10 +16,10 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Clone minetest repository
-      run: git clone https://github.com/minetest/minetest.git
+      run: git clone --mirror https://github.com/minetest/minetest.git
 
     - name: Push to GitHub
       run: |
-        cd minetest
+        cd minetest.git
         git remote set-url origin https://Renan2010:${{ secrets.PAT_GITHUB }}@github.com/Renan2010/minetest-mirror.git
         git push --mirror origin
