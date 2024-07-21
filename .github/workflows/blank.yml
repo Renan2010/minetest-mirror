@@ -1,0 +1,25 @@
+name: Mirror Minetest
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Executa a cada hora
+  workflow_dispatch:  # Permite execução manual
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Clone minetest repository
+      run: git clone https://github.com/minetest/minetest.git
+
+    - name: Push to GitHub
+      run: |
+        cd minetest
+        git remote set-url origin https://Renan2010:${{ secrets.PAT_GITHUB }}@
+        git push --mirror origin
